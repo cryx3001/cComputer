@@ -183,7 +183,7 @@
       <a name="addrWidth" val="9"/>
       <a name="appearance" val="classic"/>
       <a name="contents">addr/data: 9 40
-0
+55405640 66546645 5aa5ffff a00
 </a>
       <a name="dataWidth" val="40"/>
       <a name="label" val="PROG"/>
