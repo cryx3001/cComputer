@@ -1,0 +1,59 @@
+computer
+
+Main specs:
+    16-bits CPU
+    34-bits instructions wide
+
+    Display:
+        64x64 Screen
+        256 Colors
+
+    Memory:
+        Program:            ROM 512   x 40 
+        General + Video:    RAM 32K   x 16 (0x0000 - 0x0010 reserved)
+        
+
+
+Instructions:
+    Syntax:
+        'NNNN'   => Write a number in decimal format
+        '0xNNNN' => Write a number in hexadecimal format
+        '0bNNNN' => Write a number in binary format
+        
+        'xxxx:' => Create a label named xxxx
+
+        Registers code:
+            R0: 0x0000 => General purpose / CST Storage
+            R1: 0x0001 => General purpose / Operations (+POP) results
+            R2: 0x0002 => General purpose
+            R3: 0x0003 => General purpose
+            ST: 0x0004 => Stack pointer
+
+    Instructions set:
+        R=Register; A=Address; V=Value; L=Label
+
+        8-bits      16-bits 16-bits
+        0xAB        0xABCD  0xABCD
+
+        0x00    NOP 
+        0x01    MOV RA  RA
+        0x02    SET V   RA
+
+        0x10    ADD RA  RA
+        0x11    SUB RA  RA
+        0x12    MUL RA  RA
+        0x13    DIV RA  RA
+
+        0x20    CMP RA  RA
+
+        0x30    BEQ L
+        0x31    BNE L
+        0x32    BLT L
+        0x33    BGT L
+        0x34    JMP L
+        0x35    RET
+
+
+        0x40    PSH RA
+        0x41    POP RA
+
