@@ -2,9 +2,11 @@
 
 #define MAX_INSTRUCTIONS 512
 #define INSTRUCTION_BITFIELD_SIZE 40
+#define INSTRUCTION_SET_SIZE 15 
 #define BINARY_MAX_SIZE MAX_INSTRUCTIONS * INSTRUCTION_BITFIELD_SIZE 
 
-enum TypeArg {
+enum WordType {
+    INSTRUCTION,
     VALUE,
     LABEL,
     NONE,
@@ -13,8 +15,13 @@ enum TypeArg {
 typedef struct {
     char name[4];
     u_int8_t opCode; 
-    enum TypeArg type1;
-    enum TypeArg type2;
+    enum WordType type;
+} Word;
+
+typedef struct {
+    Word word;
+    enum WordType argType1;
+    enum WordType argType2;
 } Instruction;
 
 typedef struct {
@@ -24,23 +31,23 @@ typedef struct {
 
 
 static Label LABELS[MAX_INSTRUCTIONS];
-static Instruction INSTRUCTIONS_SET[15] = {
-    {"NOP", 0x00, NONE, NONE},
-    {"MOV", 0x01, VALUE, VALUE},
-    {"SET", 0x02, VALUE, VALUE},
+static Instruction INSTRUCTIONS_SET[INSTRUCTION_SET_SIZE] = {
+    {{"NOP", 0x00, INSTRUCTION}, NONE, NONE},
+    {{"MOV", 0x01, INSTRUCTION}, VALUE, VALUE},
+    {{"SET", 0x02, INSTRUCTION}, VALUE, VALUE},
 
-    {"ADD", 0x10, VALUE, VALUE},
-    {"SUB", 0x11, VALUE, VALUE},
-    {"MUL", 0x12, VALUE, VALUE},
-    {"DIV", 0x13, VALUE, VALUE},
+    {{"ADD", 0x10, INSTRUCTION}, VALUE, VALUE},
+    {{"SUB", 0x11, INSTRUCTION}, VALUE, VALUE},
+    {{"MUL", 0x12, INSTRUCTION}, VALUE, VALUE},
+    {{"DIV", 0x13, INSTRUCTION}, VALUE, VALUE},
 
-    {"CMP", 0x20, VALUE, VALUE},
-    {"TST", 0x21, VALUE, NONE},
+    {{"CMP", 0x20, INSTRUCTION}, VALUE, VALUE},
+    {{"TST", 0x21, INSTRUCTION}, VALUE, NONE},
 
-    {"BEQ", 0x30, LABEL, NONE},
-    {"BNE", 0x31, LABEL, NONE},
-    {"BLT", 0x32, LABEL, NONE},
-    {"BGT", 0x33, LABEL, NONE},
-    {"JMP", 0x34, LABEL, NONE},
-    {"RET", 0x35, LABEL, NONE}
+    {{"BEQ", 0x30, INSTRUCTION}, LABEL, NONE},
+    {{"BNE", 0x31, INSTRUCTION}, LABEL, NONE},
+    {{"BLT", 0x32, INSTRUCTION}, LABEL, NONE},
+    {{"BGT", 0x33, INSTRUCTION}, LABEL, NONE},
+    {{"JMP", 0x34, INSTRUCTION}, LABEL, NONE},
+    {{"RET", 0x35, INSTRUCTION}, LABEL, NONE}
 };
