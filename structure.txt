@@ -23,8 +23,8 @@ Instructions:
         'xxxx:' => Create a label named xxxx
 
         Registers code:
-            R0: 0x0000 => General purpose / CST Storage
-            R1: 0x0001 => General purpose / Operations (+POP) results
+            R0: 0x0000 => General purpose
+            R1: 0x0001 => General purpose 
             R2: 0x0002 => General purpose
             R3: 0x0003 => General purpose
             ST: 0x0004 => Stack pointer
@@ -45,6 +45,7 @@ Instructions:
         0x13    DIV RA  RA
 
         0x20    CMP RA  RA
+        0x21    TST RA
 
         0x30    BEQ L
         0x31    BNE L

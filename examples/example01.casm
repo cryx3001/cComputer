@@ -1,0 +1,12 @@
+SET 5   R1
+MOV R1  R2
+SET 0   R1
+
+loop:
+    SUB 1  R2
+    ADD 1  R1
+    TST R2
+    BEQ loop
+    
+MOV R1 0x0010
+SET 65 17

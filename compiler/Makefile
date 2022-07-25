@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -g -O1 -fsanitize=address
 
-_SRC=
+_SRC=parser.c
 SRC_DIR=src
 SRC=$(addprefix $(SRC_DIR)/, $(_SRC))
 

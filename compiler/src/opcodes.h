@@ -1,4 +1,8 @@
+#include <sys/types.h>
+
 #define MAX_INSTRUCTIONS 512
+#define INSTRUCTION_BITFIELD_SIZE 40
+#define BINARY_MAX_SIZE MAX_INSTRUCTIONS * INSTRUCTION_BITFIELD_SIZE 
 
 enum TypeArg {
     VALUE,
@@ -8,19 +12,19 @@ enum TypeArg {
 
 typedef struct {
     char name[4];
-    unsigned char opCode; 
+    u_int8_t opCode; 
     enum TypeArg type1;
     enum TypeArg type2;
 } Instruction;
 
 typedef struct {
     char* labelName;
-    int opCode;
+    u_int16_t opAddr;
 } Label;
 
 
 static Label LABELS[MAX_INSTRUCTIONS];
-static Instruction INSTRUCTIONS_SET[14] = {
+static Instruction INSTRUCTIONS_SET[15] = {
     {"NOP", 0x00, NONE, NONE},
     {"MOV", 0x01, VALUE, VALUE},
     {"SET", 0x02, VALUE, VALUE},
@@ -31,6 +35,7 @@ static Instruction INSTRUCTIONS_SET[14] = {
     {"DIV", 0x13, VALUE, VALUE},
 
     {"CMP", 0x20, VALUE, VALUE},
+    {"TST", 0x21, VALUE, NONE},
 
     {"BEQ", 0x30, LABEL, NONE},
     {"BNE", 0x31, LABEL, NONE},
