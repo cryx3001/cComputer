@@ -16,10 +16,13 @@ int contains(char c, char *s){
     return 0;
 }
 
+int isAlpha(char c){
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+}
+
 int isText(char c){
     int numeric = c >= '0' && c <= '9';
-    int alpha = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
-    return alpha || numeric || contains(c, specialChars);
+    return isAlpha(c) || numeric || contains(c, specialChars);
 }
 
 void toUpperCase(char* s){
@@ -84,11 +87,20 @@ char* isWordNumber(char* text){
 
 int isWordRegister(char* text, int* registerCode){
     if(text[0] == 'R'){
-        if(strlen(text) == 2 && text[1] >= '0' && text[1] <= '4')
+        if(strlen(text) == 2 && text[1] >= '0' && text[1] <= '4'){
+            *registerCode = text[1] - '0';
             return 1;
+        }
         errx(1, "Bad register format! %s", text);
     }
     return 0;
+}
+
+int isWordLabel(char* text){
+    for(; *text != ':'; text++)
+        if(*text == '\0' || !isAlpha(*text)) 
+            return 0;
+    return 1;
 }
 
 char* getNumberBase(char* text, enum NumberBase* b){
@@ -117,7 +129,7 @@ u_int8_t getDigitValue(char c){
 }
 
 int isDigitOnRightBase(char c, enum NumberBase b){
-    int tenFirstDigits = c >= '0' && c <= '9' && b == HEX || b == DEC;
+    int tenFirstDigits = c >= '0' && c <= '9' && (b == HEX || b == DEC);
     int twoFirstDigits = (c == '0' || c == '1') && b == BIN;
     int sixLastDigits = c >= 'A' && c <= 'F' && b == HEX;
     return tenFirstDigits || twoFirstDigits || sixLastDigits;

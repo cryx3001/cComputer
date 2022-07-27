@@ -13,14 +13,26 @@ int main(int argc, char* argv[]){
         size_t numArgs = 0;
         Instruction* in = isWordInstruction(y[i], &numArgs);
         if(in != NULL){
-            printf("(%p, 0x%02X, %lu)\n", in, in->word.opCode, numArgs);
+            printf("(%p, 0x%02X, %lu)\n", in, in->word.opCode.u8, numArgs);
             continue;
         }
 
         char* number = isWordNumber(y[i]);
-        printf("(%p, ", number);
-        if(number != NULL)
-            printf(" %d)", getNumberValue(number));
+        if(number != NULL){
+            printf("(%d)\n", getNumberValue(number));
+            continue;
+        }
+
+        int reg;
+        if(isWordRegister(y[i], &reg)){
+            printf("(%d)\n", reg);
+            continue;
+        }
+
+        if(isWordLabel(y[i])){
+            printf("Label %s\n", y[i]);
+            continue;
+        }
         printf("\n");
     }
     

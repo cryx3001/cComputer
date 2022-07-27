@@ -7,4 +7,6 @@ char* fileToString(char* path);
 char** getWords(char* text, size_t* numWords);
 Instruction* isWordInstruction(char* text, size_t* numArgs);
 char* isWordNumber(char* text);
+int isWordRegister(char* text, int* registerCode);
+int isWordLabel(char* text);
 u_int8_t getNumberValue(char* text);
