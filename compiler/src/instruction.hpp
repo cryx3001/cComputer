@@ -1,7 +1,12 @@
+#pragma once
+
 #include <err.h>
+#include <map>
 #include "token.hpp"
 
 #define SIZE_INSTRUCTION_BITS 40 // 8 (func) + 16 (arg1) + 16 (arg2)
+
+static std::map<uint16_t, Token*> INSTRUCTIONS_MAP = std::map<uint16_t, Token*>();
 
 class Instruction {
     private:

@@ -9,9 +9,9 @@ Main specs:
         256 Colors
 
     Memory:
-        Program:            ROM 512   x 40 
+        Program:            ROM 512   x 40
         General + Video:    RAM 32K   x 16 (0x0000 - 0x0010 reserved)
-        
+
 
 
 Instructions:
@@ -19,12 +19,12 @@ Instructions:
         '#1234'  => decimal format
         '#$ABCD' => hexadecimal format
         '#%1011' => binary format
-        
+
         'xxxx:' => Create a label named xxxx
 
         Registers code:
             R0: 0x0000 => General purpose
-            R1: 0x0001 => General purpose 
+            R1: 0x0001 => General purpose
             R2: 0x0002 => General purpose
             R3: 0x0003 => General purpose
             R4: 0x0004 => Stack pointer
@@ -35,7 +35,7 @@ Instructions:
         8-bits      16-bits 16-bits
         0xAB        0xABCD  0xABCD
 
-        0x00    NOP 
+        0x00    NOP
         0x01    MOV RA  RA
         0x02    SET V   RA
 

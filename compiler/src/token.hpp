@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 union Code {
@@ -7,8 +9,9 @@ union Code {
 
 enum Type {
     FUNCTION,
-    VALUE, // Which includes register and numbers (+ memory address)
-    LABEL,
+    VALUE, // Can also be an adress
+    LABEL_ENTRY,
+    LABEL_EXIT,
     NONE
 };
 
@@ -28,7 +31,7 @@ class Token {
 
     public:
         Token(std::string name, enum Type type, uint16_t code,
-                Function* func = NULL){
+                Function* func = nullptr){
             this->name = name;
             this->code = {code}; // If the token is a label, the code will be
                                  // the instruction address
@@ -39,6 +42,7 @@ class Token {
         Function* getFuncPtr(){ return this->func; }
         enum Type getType(){ return this->type; }
         union Code getCode(){ return this->code; }
+        std::string getName(){ return this->name; }
 
         static int isTypeValid(Token* arg, enum Type exceptedType){
             return (exceptedType == NONE && arg == nullptr) ||

@@ -7,6 +7,6 @@ loop:
     ADD #1 R1
     TST R2
     BEQ loop
-    
+
 MOV R1  #%0010
-SET #65 #17
+SET #65 #$50
