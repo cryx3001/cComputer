@@ -2,11 +2,11 @@
 
 #include <err.h>
 #include <map>
+#include <vector>
+#include <iostream>
 #include "token.hpp"
 
 #define SIZE_INSTRUCTION_BITS 40 // 8 (func) + 16 (arg1) + 16 (arg2)
-
-static std::map<uint16_t, Token*> INSTRUCTIONS_MAP = std::map<uint16_t, Token*>();
 
 class Instruction {
     private:
@@ -19,10 +19,8 @@ class Instruction {
             Function* f;
             if(func == nullptr || (f = func->getFuncPtr()) == nullptr)
                 warn("nullptr given for func or not recognized!");
-            if(!Token::isTypeValid(arg1, func->getType()))
-                warn("arg1 doesn't have excepted type!");
-            if(!Token::isTypeValid(arg2, func->getType()))
-                warn("arg2 doesn't have excepted type!");
+            Token::checkTypes(arg1, f->arg1);
+            Token::checkTypes(arg2, f->arg2);
         }
 
         Token* getFunction(){ return function; }
@@ -36,3 +34,5 @@ class Instruction {
 
         uint8_t* getInstructionBitField();
 };
+
+std::vector<Instruction*> createVectInstructions(std::vector<Token*> tokens);

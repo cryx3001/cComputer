@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 
 union Code {
@@ -42,10 +43,15 @@ class Token {
         Function* getFuncPtr(){ return this->func; }
         enum Type getType(){ return this->type; }
         union Code getCode(){ return this->code; }
+        void setCode(uint16_t code){ this->code =  {code}; }
         std::string getName(){ return this->name; }
 
-        static int isTypeValid(Token* arg, enum Type exceptedType){
-            return (exceptedType == NONE && arg == nullptr) ||
+        static int checkTypes(Token* arg, enum Type exceptedType){
+            int res = (exceptedType == NONE && arg == nullptr) ||
                 (arg != nullptr && arg->getType() == exceptedType);
+            if(!res)
+                std::cout << "Bad types check for " << arg << "! Expected " <<
+                    exceptedType << std::endl;
+            return res;
         }
 };

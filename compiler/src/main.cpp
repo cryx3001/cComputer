@@ -1,5 +1,6 @@
 #include "opcodes.hpp"
 #include "parser.hpp"
+#include "instruction.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -10,20 +11,12 @@ int main(int argc, char* argv[]){
         cerr << "Expected one argument, got " << argc - 1 << endl;
         return 1;
     }
-
-    ifstream file;
-    file.open(argv[1]);
-    if(!file.is_open()){
-        cerr << "Couldn't open file " << argv[1] << endl;
-        return 1;
+    std::vector<Token*> tokens = getVectorTokens(argv[1]);
+    int i = 0;
+    for(Token* t : tokens){
+        cout << i << ": " <<  t << "\t" << t->getName() << " " << t->getType() << " " << t->getFuncPtr() << endl;
+        i++;
     }
 
-    string word;
-    while(file >> word)
-    {
-        cout << word;
-        Token* t = getToken(word);
-        cout << " " << t->getCode().u16 << " "  << t->getType() << " " <<  t->getFuncPtr() << "\n";
-    }
-
+    createVectInstructions(tokens);
 }
