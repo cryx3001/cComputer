@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cctype>
 #include "parser.hpp"
 
 Token* isFunction(std::string s){
@@ -58,10 +59,13 @@ std::vector<Token*> getVectorTokens(std::string path){
     std::string word;
     while(file >> word)
     {
+        for(char &c: word)
+            c = toupper(c);
         //std::cout << word;
         Token* t = getToken(word);
         //std::cout << " " << t->getCode().u16 << " "  << t->getType() << " " <<  t->getFuncPtr() << "\n";
         tokens.push_back(t);
     }
+    file.close();
     return tokens;
 }
