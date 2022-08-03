@@ -1,11 +1,15 @@
 SET #50 R0
-SET #0  R1
-SET #1  R2
+SET #1  R1
+SET #0  R3
 
 loop:
-    SUB R2 R0
-    ADD R2 R1
-    TST R2
+    SUB
+    MOV R2 R4
+    MOV R3 R1
+    ADD
+    MOV R2 R1
+    MOV R4 R0
+    TST R0
     BEQ loop
 
 MOV R1  #$0020

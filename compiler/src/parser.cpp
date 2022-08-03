@@ -15,7 +15,7 @@ Token* isFunction(std::string s){
 }
 
 Token* isRegister(std::string s){
-    if(s.length() == 2 && s[0] == 'R' && s[1] >= '0' && s[1] <= '4')
+    if(s.length() == 2 && s[0] == 'R' && s[1] >= '0' && s[1] <= '7')
         return new Token(s, VALUE, (uint16_t) (s[1] - '0'), nullptr);
     return nullptr;
 }

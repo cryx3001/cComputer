@@ -26,13 +26,24 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     'xxxx:' => Create a label named xxxx
 
 #### Register codes
-    R0: 0x0000 => General purpose
-    R1: 0x0001 => General purpose
-    R2: 0x0002 => General purpose
+    R0: 0x0000 => Operand 1
+    R1: 0x0001 => Operand 2
+    R2: 0x0002 => Result
     R3: 0x0003 => General purpose
-    R4: 0x0004 => Stack pointer
+    R4: 0x0004 => General purpose
+    R5: 0x0004 => General purpose
+    R6: 0x0004 => General purpose
+    R7: 0x0005 => Stack pointer
 
 #### Instructions set
+    Instructions of type "INST RA RA" should be readen as INST SRC DEST
+    If a '=>' is visible, it means that the value will be stored into the
+    concerned register.
+    
+    Tokens between () are implicit and must not be written in .casm files.
+
+    CMP and TST will store their value (1/0) into a flag.
+
     R=Register; A=Address; V=Value; L=Label
 
     8-bits      16-bits 16-bits
@@ -42,12 +53,12 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x01    MOV RA  RA
     0x02    SET V   RA
 
-    0x10    ADD RA  RA
-    0x11    SUB RA  RA
-    0x12    MUL RA  RA
-    0x13    DIV RA  RA
+    0x10    ADD (R0)(R1) => (R2)
+    0x11    SUB (R0)(R1) => (R2)
+    0x12    MUL (R0)(R1) => (R2)
+    0x13    DIV (R0)(R1) => (R2)
 
-    0x20    CMP RA  RA
+    0x20    CMP RA  RA 
     0x21    TST RA
 
     0x30    BEQ L
