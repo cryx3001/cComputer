@@ -1,0 +1,8 @@
+SET #50     R0
+SET #4      R1
+MOV R1      R4
+MUL
+MOV R2      #$0020
+SET #$1234  #$0021
+MOV #$0021  R3
+MOV #$0021  #$0022
