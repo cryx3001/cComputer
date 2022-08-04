@@ -1,16 +1,18 @@
-SET #50 R0
-SET #1  R1
-SET #0  R3
+SET #5      #$0020
+SET #1      R1
+SET #0      #$0021
+MOV #$0020  R0
 
 loop:
     SUB
-    MOV R2 R4
-    MOV R3 R1
-    ADD
-    MOV R2 R1
-    MOV R4 R0
-    TST R0
-    BEQ loop
+    MOV R2      #$0020
 
-MOV R1  #$0020
-SET #65 #$50
+    MOV #$0021  R0
+    ADD
+    MOV R2      #$0021
+
+    MOV #$0020  R0
+    TST R0
+    BNE loop
+
+SET #1      R7
