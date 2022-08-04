@@ -12,7 +12,7 @@ This is an attempt to make a very basic CPU with its own assembly language and c
 
 ### Memory
     Program:            ROM 512   x 40
-    General + Video:    RAM 32K   x 16 (0x0000 - 0x0010 reserved)
+    General + Video:    RAM 64K   x 16 (0x0000 - 0x0010 reserved)
 
 
 
@@ -66,3 +66,13 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x32    BLT L
     0x33    BGT L
     0x34    JMP L
+
+## Usage
+- Create a .casm file (examples are available in `./examples/`)
+- In `./compiler/` run `make` to create the compiler.
+- Once the compiler is ready, run `./cryxc path_to_file.casm` to compile the file, a file `out.cout` will be created.
+You can also run `./cryxc file.casm output_name` to create instead the file `output_name.cout` in the desired directory.
+- Run Logisim Evolution, load `./circuits/main.circ` and load the `.cout` file into the ROM.
+- Go into the simulation tab to config the simulation and to run it.
+- If you want to reset the simulation, you can click on the red button or press `Ctrl-R`.
+
