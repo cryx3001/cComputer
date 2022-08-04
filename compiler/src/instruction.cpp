@@ -4,24 +4,6 @@
 
 typedef std::map<std::string, uint16_t> DictLabels;
 
-uint8_t* Instruction::getInstructionBitField(){
-    uint8_t* res = new uint8_t(SIZE_INSTRUCTION_BITS / 8);
-    std::cout << SIZE_INSTRUCTION_BITS / 8 << "\n";
-    Token* function = this->getFunction();
-    Token* arg1 = nullptr;
-    Token* arg2 = nullptr;
-    this->getArgs(&arg1, &arg2);
-
-    uint8_t code1 = (uint8_t)(arg1 == nullptr ? 0x0000 : arg1->getCode().u16);
-    uint8_t code2 = (uint8_t)(arg2 == nullptr ? 0x0000 : arg2->getCode().u16);
-    printf("%02X, %02X, %02X\n", function->getCode().u8, code1, code2);
-    res[0] = function->getCode().u8;
-    res[1] = code1;
-    res[3] = code2;
-
-    return res;
-}
-
 void editArgToken(Token** arg, std::vector<Token*> tokens, Type typeArg, size_t *i, DictLabels* dict){
     if(typeArg != NONE){
         (*i)++;

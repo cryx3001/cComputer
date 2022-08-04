@@ -13,14 +13,16 @@ void writeInstructionBytes(Instruction* i, ofstream* file){
     i->getArgs(&arg1, &arg2);
 
     uint8_t funcCode = function->getCode().u8;
-    uint16_t code1 = arg1 == nullptr ? 0x0000 : arg1->getCode().u8;
-    uint16_t code2 = arg2 == nullptr ? 0x0000 : arg2->getCode().u8;
+    uint16_t codes[2] = {
+        arg1 == nullptr ? (uint16_t) 0x0000 : arg1->getCode().u16,
+        arg2 == nullptr ? (uint16_t) 0x0000 : arg2->getCode().u16
+    };
 
     file->write((char*)(&funcCode), 1);
-    file->write((char*)(&code1) + 1, 1);
-    file->write((char*)(&code1), 1);
-    file->write((char*)(&code2) + 1, 1);
-    file->write((char*)(&code2), 1);
+    for(int i = 0; i < 2; i++){
+        for(int j = 1; j >= 0; j--)
+            file->write((char*)(&codes[i]) + j, 1);
+    }
 }
 
 int createOutputFile(string pathOut, vector<Instruction*>* instVect){
