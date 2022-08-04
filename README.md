@@ -33,7 +33,7 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     R4: 0x0004 => General purpose
     R5: 0x0004 => General purpose
     R6: 0x0004 => General purpose
-    R7: 0x0005 => Stack pointer
+    R7: 0x0005 => General purpose
 
 #### Instructions set
     Instructions of type "INST RA RA" should be readen as INST SRC DEST
@@ -58,16 +58,11 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x12    MUL (R0)(R1) => (R2)
     0x13    DIV (R0)(R1) => (R2)
 
-    0x20    CMP RA  RA 
-    0x21    TST RA
+    0x20    CMP R  R 
+    0x21    TST R
 
     0x30    BEQ L
     0x31    BNE L
     0x32    BLT L
     0x33    BGT L
     0x34    JMP L
-    0x35    RET
-
-
-    0x40    PSH RA
-    0x41    POP RA
