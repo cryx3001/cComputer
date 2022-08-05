@@ -1420,6 +1420,7 @@
     </comp>
     <comp lib="0" loc="(490,320)" name="Pin">
       <a name="appearance" val="NewPins"/>
+      <a name="label" val="INT_ARG"/>
       <a name="radix" val="16"/>
       <a name="width" val="16"/>
     </comp>
@@ -1473,14 +1474,12 @@
     </comp>
     <comp lib="0" loc="(380,460)" name="Pin">
       <a name="appearance" val="NewPins"/>
-      <a name="label" val="is_memaddr"/>
-      <a name="radix" val="16"/>
+      <a name="label" val="IS_MEMADDR"/>
     </comp>
     <comp lib="0" loc="(530,440)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
-      <a name="radix" val="16"/>
     </comp>
     <comp lib="1" loc="(500,440)" name="AND Gate">
       <a name="negate1" val="true"/>
@@ -1497,7 +1496,6 @@
     <comp lib="0" loc="(460,520)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="IS_POINTER"/>
-      <a name="radix" val="16"/>
     </comp>
     <comp lib="0" loc="(470,450)" name="Pin">
       <a name="appearance" val="NewPins"/>

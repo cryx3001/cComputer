@@ -68,11 +68,28 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x34    JMP L
 
 ## Usage
-- Create a .casm file (examples are available in `./examples/`)
+- Create a `.casm` file (examples are available in `./examples/`)
 - In `./compiler/` run `make` to create the compiler.
 - Once the compiler is ready, run `./cryxc path_to_file.casm` to compile the file, a file `out.cout` will be created.
 You can also run `./cryxc file.casm output_name` to create instead the file `output_name.cout` in the desired directory.
-- Run Logisim Evolution, load `./circuits/main.circ` and load the `.cout` file into the ROM.
-- Go into the simulation tab to config the simulation and to run it.
+- Run *Logisim Evolution*, load `./circuits/main.circ` and load the `.cout` file into the ROM.
+- Go into the **Simulation** tab to config the simulation and to run it.
 - If you want to reset the simulation, you can click on the red button or press `Ctrl-R`.
 
+## The circuits
+<details>
+    <summary>Main circuit</summary>
+    <img src="./circuits/main.png"/>
+</details>
+<details>
+    <summary>Subcircuit is_memaddr</summary>
+    <img src="./circuits/is_memaddr.png"/>
+</details>
+<details>
+    <summary>Subcircuit is_pointer</summary>
+    <img src="./circuits/is_pointer.png"/>
+</details>
+<details>
+    <summary>Subcircuit get_addr_target</summary>
+    <img src="./circuits/get_addr_target.png"/>
+</details>
