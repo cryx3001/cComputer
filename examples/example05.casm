@@ -1,0 +1,25 @@
+SET #5      R0
+SET #1      R1
+SET #$001f  R6
+SET #$0020  R3
+
+loop:
+    SUB
+    MOV R2  *R3
+    MOV *R3 R7
+    MOV *R3 *R6
+
+    MOV R2  R4
+
+    MOV R3  R0
+    ADD
+    MOV R2  R3
+
+    MOV R4  R0
+
+    TST R0
+    BNE loop
+
+MOV R3      R0
+ADD
+SET #$ABCD  *R2

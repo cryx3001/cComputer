@@ -12,8 +12,7 @@ This is an attempt to make a very basic CPU with its own assembly language and c
 
 ### Memory
     Program:            ROM 512   x 40
-    General + Video:    RAM 64K   x 16 (0x0000 - 0x0010 reserved)
-
+    General + Video:    RAM 64K   x 16 (0x0000 - 0x0020 reserved)
 
 
 ### Instructions
@@ -36,22 +35,23 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     R7: 0x0005 => General purpose
 
 #### Instructions set
-    Instructions of type "INST RA RA" should be readen as INST SRC DEST
-    If a '=>' is visible, it means that the value will be stored into the
-    concerned register.
-    
-    Tokens between () are implicit and must not be written in .casm files.
+    - Instructions of type "INST RA RA" should be readen as INST SRC DEST
+    - If a '=>' is visible, it means that the value will be stored into the
+      concerned register.
+    - Tokens between () are implicit and must not be written in .casm files.
+    - CMP and TST will store their value (1/0) into a flag.
+    - Pointers can be used for instructions with *R args, such as MOV and SET. 
+      eg: MOV *R0 R1, will copy the content of the memory at address R0 into R1
+      The usage of pointers will be ignored for CMP and TST
 
-    CMP and TST will store their value (1/0) into a flag.
-
-    R=Register; A=Address; V=Value; L=Label
+    R=Register; A=Address; V=Value; L=Label; *=Pointer
 
     8-bits      16-bits 16-bits
     0xAB        0xABCD  0xABCD
 
     0x00    NOP
-    0x01    MOV RA  RA
-    0x02    SET V   RA
+    0x01    MOV *RA *RA
+    0x02    SET V   *RA
 
     0x10    ADD (R0)(R1) => (R2)
     0x11    SUB (R0)(R1) => (R2)

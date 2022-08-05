@@ -15,8 +15,15 @@ Token* isFunction(std::string s){
 }
 
 Token* isRegister(std::string s){
-    if(s.length() == 2 && s[0] == 'R' && s[1] >= '0' && s[1] <= '7')
-        return new Token(s, VALUE, (uint16_t) (s[1] - '0'), nullptr);
+    uint16_t isPointer = 0;
+    size_t i = 0;
+    size_t sLen = s.length();
+    if(sLen > 0 && s[0] == '*'){ // Eg: *R0
+        isPointer = 0x10;
+        i++;
+    }
+    if(sLen == 2+i && s[i] == 'R' && s[i+1] >= '0' && s[i+1] <= '7')
+        return new Token(s, VALUE, (uint16_t) (s[i+1] - '0') + isPointer, nullptr);
     return nullptr;
 }
 
