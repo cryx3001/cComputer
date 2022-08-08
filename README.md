@@ -13,6 +13,7 @@ This is an attempt to make a very basic CPU with its own assembly language and c
 ### Memory
     Program:            ROM 512   x 40
     General + Video:    RAM 64K   x 16 (0x0000 - 0x0020 reserved)
+                                       (0xF000 - 0xFFFF video)
 
 
 ### Instructions
@@ -49,23 +50,25 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     8-bits      16-bits 16-bits
     0xAB        0xABCD  0xABCD
 
-    0x00    NOP
-    0x01    MOV *RA *RA
-    0x02    SET V   *RA
+    0x00    NOP                     // Nothing
+    0x01    MOV *RA *RA             // Move
+    0x02    SET V   *RA             // Set value
 
-    0x10    ADD (R0)(R1) => (R2)
-    0x11    SUB (R0)(R1) => (R2)
-    0x12    MUL (R0)(R1) => (R2)
-    0x13    DIV (R0)(R1) => (R2)
+    0x10    ADD (R0)(R1) => (R2)    // Add
+    0x11    SUB (R0)(R1) => (R2)    // Subtract
+    0x12    MUL (R0)(R1) => (R2)    // Multiply
+    0x13    DIV (R0)(R1) => (R2)    // Divide
 
-    0x20    CMP R  R 
-    0x21    TST R
+    0x20    CMP R  R                // Compare Rx to Ry
+    0x21    TST R                   // Test Rx
 
-    0x30    BEQ L
-    0x31    BNE L
-    0x32    BLT L
-    0x33    BGT L
-    0x34    JMP L
+    0x30    BEQ L                   // Go to label L if equal
+    0x31    BNE L                   // Go to label L if not equal
+    0x32    BLT L                   // Go to label L if lesser than
+    0x33    BGT L                   // Go to label L if bigger than
+    0x34    JMP L                   // Go to label L
+
+    0x40    VID                     // Refresh video output
 
 ## Usage
 - Create a `.casm` file (examples are available in `./examples/`)
