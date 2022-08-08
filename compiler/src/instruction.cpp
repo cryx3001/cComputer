@@ -8,8 +8,16 @@ void editArgToken(Token** arg, std::vector<Token*> tokens, Type typeArg, size_t 
     if(typeArg != NONE){
         (*i)++;
         *arg = tokens[*i];
-        if(typeArg == LABEL_ENTRY)
-            (*arg)->setCode(dict->at((*arg)->getName()));
+    }
+}
+
+void updateLabelsEntry(std::vector<Instruction*> inst, DictLabels labels){
+    for(Instruction* i : inst){
+        Token* arg1Token = nullptr;
+        Token* arg2Token = nullptr;
+        i->getArgs(&arg1Token, &arg2Token);
+        if(arg1Token != NULL && arg1Token->getType() == LABEL_ENTRY)
+            arg1Token->setCode(labels.at(arg1Token->getName()));
     }
 }
 
@@ -34,5 +42,6 @@ std::vector<Instruction*> createVectInstructions(std::vector<Token*> tokens){
         instructions.push_back(new Instruction(funcToken, arg1Token, arg2Token));
     }
 
+    updateLabelsEntry(instructions, labels);
     return instructions;
 }
