@@ -1,18 +1,15 @@
-SET #5      #$0020
-SET #1      R1
-SET #0      #$0021
-MOV #$0020  R0
+SET #5      R0
+SET #0      R1
+SET #1      R2
+SET #$0020  R3
 
 loop:
-    SUB
-    MOV R2      #$0020
+MOV R0      *R3
+SUB R2      R0
+ADD R2      R1
+ADD R2      R3
+TST R0
+BNE loop
 
-    MOV #$0021  R0
-    ADD
-    MOV R2      #$0021
+HLT
 
-    MOV #$0020  R0
-    TST R0
-    BNE loop
-
-SET #1      R7

@@ -39,7 +39,6 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     - Instructions of type "INST RA RA" should be readen as INST SRC DEST
     - If a '=>' is visible, it means that the value will be stored into the
       concerned register.
-    - Tokens between () are implicit and must not be written in .casm files.
     - CMP and TST will store their value (1/0) into a flag.
     - Pointers can be used for instructions with *R args, such as MOV and SET. 
       eg: MOV *R0 R1, will copy the content of the memory at address R0 into R1
@@ -54,10 +53,10 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x01    MOV *RA *RA             // Move
     0x02    SET V   *RA             // Set value
 
-    0x10    ADD (R0)(R1) => (R2)    // Add
-    0x11    SUB (R0)(R1) => (R2)    // Subtract
-    0x12    MUL (R0)(R1) => (R2)    // Multiply
-    0x13    DIV (R0)(R1) => (R2)    // Divide
+    0x10    ADD Rx Ry => Ry=Rx+Ry   // Add
+    0x11    SUB Rx Ry => Ry=Ry-Rx   // Subtract
+    0x12    MUL Rx Ry => Ry=Ry*Rx   // Multiply
+    0x13    DIV Rx Ry => Ry=Ry/Rx   // Divide
 
     0x20    CMP R  R                // Compare Rx to Ry
     0x21    TST R                   // Test Rx
@@ -69,6 +68,8 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x34    JMP L                   // Go to label L
 
     0x40    VID                     // Refresh video output
+
+    0xFF    HLT                     // Halt, stop the program
 
 ## Usage
 - Create a `.casm` file (examples are available in `./examples/`)
