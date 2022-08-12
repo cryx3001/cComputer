@@ -57,6 +57,13 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x12    MUL Rx Ry => Rx=Rx*Ry   // Multiply
     0x13    DIV Rx Ry => Rx=Rx/Ry   // Divide
 
+    0x14    NOT Rx    => Rx=!Rx     // NOT operator
+    0x15    AND Rx Ry => Rx=Rx&Ry   // AND operator
+    0x16    ORR Rx Ry => Rx=Rx|Ry   // OR operator
+    0x17    XOR Rx Ry => Rx=Rx^Ry   // XOR operator
+    0x18    ROL Rx Ry => Rx         // Left rotation of Ry bits
+    0x19    ROR Rx Ry => Rx         // Right rotation of Ry bits 
+
     0x20    CMP Rx Ry               // Compare Rx to Ry
     0x21    TST R                   // Test R
 
@@ -66,7 +73,7 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0x33    BGT L                   // Go to label L if bigger than
     0x34    JMP L                   // Go to label L
 
-    0x40    VID                     // Refresh video output
+    0xF0    VID                     // Refresh video output
 
     0xFF    HLT                     // Halt, stop the program
 
