@@ -82,17 +82,21 @@ You can also run `./cryxc file.casm output_name` to create instead the file `out
 ## The circuits
 <details>
     <summary>Main circuit</summary>
-    <img src="./circuits/main.png"/>
+    <img src="./circuits/images/main.png"/>
 </details>
 <details>
     <summary>Subcircuit is_memaddr</summary>
-    <img src="./circuits/is_memaddr.png"/>
+    <img src="./circuits/images/is_memaddr.png"/>
 </details>
 <details>
     <summary>Subcircuit is_pointer</summary>
-    <img src="./circuits/is_pointer.png"/>
+    <img src="./circuits/images/is_pointer.png"/>
 </details>
 <details>
     <summary>Subcircuit get_addr_target</summary>
-    <img src="./circuits/get_addr_target.png"/>
+    <img src="./circuits/images/get_addr_target.png"/>
+</details>
+<details>
+    <summary>Subcircuit condition</summary>
+    <img src="./circuits/images/condition.png"/>
 </details>
