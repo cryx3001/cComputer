@@ -1,10 +1,10 @@
-SET #$F100  R3
-SET #$F000  R0
-SET #2      R1
+SET R0      #$F000
+SET R1      #2
+SET R3      #$F100
 
 loop:
-    SET #$7FFF  *R0
-    ADD R1      R0
+    SET *R0     #$7FFF
+    ADD R0      R1
 
     CMP R0      R3
     BNE loop

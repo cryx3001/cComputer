@@ -36,7 +36,6 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     R7: 0x0005 => General purpose
 
 #### Instructions set
-    - Instructions of type "INST RA RA" should be readen as INST SRC DEST
     - If a '=>' is visible, it means that the value will be stored into the
       concerned register.
     - CMP and TST will store their value (1/0) into a flag.
@@ -50,16 +49,16 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     0xAB        0xABCD  0xABCD
 
     0x00    NOP                     // Nothing
-    0x01    MOV *RA *RA             // Move
-    0x02    SET V   *RA             // Set value
+    0x01    MOV *RAx *RAy           // Move Y to X
+    0x02    SET *RA  V              // Set value V
 
-    0x10    ADD Rx Ry => Ry=Rx+Ry   // Add
-    0x11    SUB Rx Ry => Ry=Ry-Rx   // Subtract
-    0x12    MUL Rx Ry => Ry=Ry*Rx   // Multiply
-    0x13    DIV Rx Ry => Ry=Ry/Rx   // Divide
+    0x10    ADD Rx Ry => Rx=Rx+Ry   // Add
+    0x11    SUB Rx Ry => Rx=Rx-Ry   // Subtract
+    0x12    MUL Rx Ry => Rx=Rx*Ry   // Multiply
+    0x13    DIV Rx Ry => Rx=Rx/Ry   // Divide
 
-    0x20    CMP R  R                // Compare Rx to Ry
-    0x21    TST R                   // Test Rx
+    0x20    CMP Rx Ry               // Compare Rx to Ry
+    0x21    TST R                   // Test R
 
     0x30    BEQ L                   // Go to label L if equal
     0x31    BNE L                   // Go to label L if not equal

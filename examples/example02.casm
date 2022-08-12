@@ -1,11 +1,11 @@
-SET #5 R0
-SET #9 R1
-SET #9 R2
-SET #0 R3
+SET R0      #5
+SET R1      #9
+SET R2      #9
+SET R3      #0
 
 TST R3
-CMP R0 R1
-CMP R2 R0
-CMP R1 R2
+CMP R0      R1
+CMP R2      R0
+CMP R1      R2
 
 HLT
