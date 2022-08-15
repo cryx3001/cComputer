@@ -7,8 +7,8 @@ This is an attempt to make a very basic CPU with its own assembly language and c
 `40-bits` Instructions wide
 
 ### Display
-    64x64 Screen
-    256 Colors
+    64x64   Screen
+    15-bits Colors
 
 ### Memory
     Program:            ROM 512   x 40
@@ -106,4 +106,8 @@ You can also run `./cryxc file.casm output_name` to create instead the file `out
 <details>
     <summary>Subcircuit condition</summary>
     <img src="./circuits/images/condition.png"/>
+</details>
+<details>
+    <summary>Subcircuit ALU</summary>
+    <img src="./circuits/images/alu.png"/>
 </details>
