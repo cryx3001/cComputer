@@ -10,7 +10,7 @@ union Code {
 
 enum Type {
     FUNCTION,
-    VALUE, // Can also be an adress
+    VALUE, // Can also be an address
     LABEL_ENTRY,
     LABEL_EXIT,
     NONE
@@ -47,11 +47,7 @@ class Token {
         std::string getName(){ return this->name; }
 
         static int checkTypes(Token* arg, enum Type exceptedType){
-            int res = (exceptedType == NONE && arg == nullptr) ||
+             return (exceptedType == NONE && arg == nullptr) ||
                 (arg != nullptr && arg->getType() == exceptedType);
-            if(!res)
-                std::cout << "Bad types check for " << arg << "! Expected " <<
-                    exceptedType << std::endl;
-            return res;
         }
 };

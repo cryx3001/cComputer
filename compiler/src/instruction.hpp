@@ -19,8 +19,10 @@ class Instruction {
             Function* f;
             if(func == nullptr || (f = func->getFuncPtr()) == nullptr)
                 std::cerr << "nullptr given for func or not recognized!" << std::endl;
-            Token::checkTypes(arg1, f->arg1);
-            Token::checkTypes(arg2, f->arg2);
+            int res = Token::checkTypes(arg1, f->arg1);
+            res &= Token::checkTypes(arg2, f->arg2);
+            if(!res)
+                errx(1, "Bad argument for %s!", func->getName().c_str());
             this->function = func;
             this->arg1 = arg1;
             this->arg2 = arg2;

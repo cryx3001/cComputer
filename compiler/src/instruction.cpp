@@ -35,8 +35,10 @@ std::vector<Instruction*> createVectInstructions(std::vector<Token*> tokens){
             labels.insert({funcToken->getName(), instructions.size()});
             continue;
         }
-        if(func == nullptr)
-            errx(1, "Awaited funcPtr!");
+        if(func == nullptr){
+            errx(1, "Bad syntax near '%s' (instruction n°%lu)",
+                    funcToken->getName().c_str(), instructions.size());
+        }
         editArgToken(&arg1Token, tokens, func->arg1, &i);
         editArgToken(&arg2Token, tokens, func->arg2, &i);
         instructions.push_back(new Instruction(funcToken, arg1Token, arg2Token));
