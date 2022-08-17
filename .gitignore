@@ -1,2 +1,4 @@
 compiler/cryxc
 *.cout
+bin
+obj
