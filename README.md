@@ -26,9 +26,9 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     'xxxx:' => Create a label named xxxx
 
 #### Register codes
-    R0: 0x0000 => Operand 1
-    R1: 0x0001 => Operand 2
-    R2: 0x0002 => Result
+    R0: 0x0000 => General purpose
+    R1: 0x0001 => General purpose
+    R2: 0x0002 => General purpose
     R3: 0x0003 => General purpose
     R4: 0x0004 => General purpose
     R5: 0x0004 => General purpose
