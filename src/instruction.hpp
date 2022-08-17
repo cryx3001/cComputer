@@ -3,7 +3,6 @@
 #include <err.h>
 #include <map>
 #include <vector>
-#include <iostream>
 #include "token.hpp"
 
 #define SIZE_INSTRUCTION_BITS 40 // 8 (func) + 16 (arg1) + 16 (arg2)

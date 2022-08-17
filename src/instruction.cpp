@@ -1,5 +1,3 @@
-#include <vector>
-#include <map>
 #include "instruction.hpp"
 
 typedef std::map<std::string, uint16_t> DictLabels;

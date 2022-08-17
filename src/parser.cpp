@@ -1,6 +1,4 @@
-#include <iostream>
 #include <fstream>
-#include <cctype>
 #include "parser.hpp"
 
 Token* isFunction(std::string s){
