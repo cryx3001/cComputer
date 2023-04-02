@@ -26,14 +26,14 @@ This is an attempt to make a very basic CPU with its own assembly language and c
     'xxxx:' => Create a label named xxxx
 
 #### Register codes
-    R0: 0x0000 => General purpose
-    R1: 0x0001 => General purpose
-    R2: 0x0002 => General purpose
-    R3: 0x0003 => General purpose
-    R4: 0x0004 => General purpose
-    R5: 0x0004 => General purpose
-    R6: 0x0004 => General purpose
-    R7: 0x0005 => General purpose
+    R0: 0x0000
+    R1: 0x0001
+    R2: 0x0002
+    R3: 0x0003
+    R4: 0x0004
+    R5: 0x0005
+    R6: 0x0006
+    R7: 0x0007
 
 #### Instructions set
     - If a '=>' is visible, it means that the value will be stored into the
